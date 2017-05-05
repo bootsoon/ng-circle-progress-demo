@@ -2,3 +2,19 @@
 @import "../node_modules/bootstrap/dist/css/bootstrap.css";
 
 .cursor-pointer {cursor:pointer}
+.nav-tabs { margin-bottom: 15px }
+
+.form-horizontal .control-label {
+    text-align: left!important;
+}
+
+.form-horizontal {padding-left: 1.2em;}
+
+svg.copy { cursor: copy; }
+
+pre {
+    background-color: #ffffff;
+    border: none;
+}
+
+body {padding-bottom:500px;}

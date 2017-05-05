@@ -15,84 +15,75 @@
 </div>
 
 <div class="container">
-  <div class="col-md-6 col-sm-12">
-    <circle-progress [percent]="options.percent" [radius]="options.radius" [subtitleFormat]="options.subtitleFormat" [space]="options.space"
-      [outerStrokeWidth]="options.outerStrokeWidth" [innerStrokeWidth]="options.innerStrokeWidth" [animationDuration]="options.animationDuration"
-      [outerStrokeColor]="options.outerStrokeColor" [innerStrokeColor]="options.innerStrokeColor" [backgroundColor]="options.backgroundColor"
-      [backgroundOpacity]="options.backgroundOpacity" [class]="options.class" [animation]="true" [animationDuration]="500"
-      [animateTitle]="true" [animateSubtitle]="false"></circle-progress>
+
+  <div class="col-sm-12" style="margin-bottom:30px;">
+    <circle-progress [options]="optionsA" [renderOnClick]="false" class="copy" (click)="copyOptions($event, optionsA)"></circle-progress>
+    <circle-progress [options]="optionsB" [renderOnClick]="false" class="copy" (click)="copyOptions($event, optionsB)"></circle-progress>
+    <circle-progress [options]="optionsC" [renderOnClick]="false" class="copy" (click)="copyOptions($event, optionsC)"></circle-progress>
+    <circle-progress [options]="optionsD" [renderOnClick]="false" class="copy" (click)="copyOptions($event, optionsD)"></circle-progress>
   </div>
 
   <div class="col-md-6 col-sm-12">
 
-    <form class="form-horizontal">
-      <div class="form-group">
-        <label for="percent" class="col-sm-4 control-label">percent = <span class="text-muted">{{options.percent}}%</span></label>
-        <div class="col-sm-8">
-          <input name="percent" type="range" [(ngModel)]="options.percent" min="0" max="1100" step="10">
-        </div>
+    <a href="javascript:;" class="btn btn-default pull-right" role="button" (click)="resetOptions()">Reset</a>
+
+    <circle-progress #circleProgress [percent]="options.percent" [radius]="options.radius" [subtitleFormat]="options.subtitleFormat"
+      [space]="options.space" [outerStrokeWidth]="options.outerStrokeWidth" [innerStrokeWidth]="options.innerStrokeWidth" [animationDuration]="options.animationDuration"
+      [outerStrokeColor]="options.outerStrokeColor" [innerStrokeColor]="options.innerStrokeColor" [backgroundColor]="options.backgroundColor"
+      [backgroundOpacity]="options.backgroundOpacity" [class]="'center-block cursor-pointer'" [animation]="options.animation"
+      [backgroundStroke]="options.backgroundStroke" [backgroundStrokeWidth]="options.backgroundStrokeWidth" [backgroundPadding]="options.backgroundPadding"
+      [animateTitle]="options.animateTitle" [unitsFontSize]="options.unitsFontSize" [unitsColor]="options.unitsColor" [titleColor]="options.titleColor"
+      [titleFontSize]="options.titleFontSize" [subtitleColor]="options.subtitleColor" [subtitleFontSize]="options.subtitleFontSize"
+      [showTitle]="options.showTitle" [showSubtitle]="options.showSubtitle" [showUnits]="options.showUnits" [titleFontSize]="options.titleFontSize"
+      [unitsFontSize]="options.unitsFontSize" [subtitleFontSize]="options.subtitleFontSize" [outerStrokeLinecap]="options.outerStrokeLinecap"
+      [showBackground]="options.showBackground" [showInnerStroke]="options.showInnerStroke" [maxPercent]="options.maxPercent"
+      [toFixed]="options.toFixed"></circle-progress>
+  </div>
+
+  <div class="col-md-6 col-sm-12">
+
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" *ngFor="let group of controlGroups; let first=first" [ngClass]="{active: first}">
+        <a href="#{{group.groupName}}" [attr.aria-controls]="group.groupName" role="tab" data-toggle="tab">{{group.groupName}}</a>
+      </li>
+      <li>
+        <a href="#typescript" aria-controls="typesript" role="tab" data-toggle="tab">TypeScript</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane" [ngClass]="{active: first}" id="{{group.groupName}}" *ngFor="let group of controlGroups; let first=first">
+        <form class="form-horizontal">
+          <div class="form-group" *ngFor="let control of group.controls">
+            <label for="percent" class="col-sm-6 control-label">{{control.name}} <span class="text-muted">= {{options[control.name]}}</span></label>
+            <div class="col-sm-6">
+              <input *ngIf="control.type==='checkbox'" [name]="control.name" [attr.name]="control.name" type="checkbox" [(ngModel)]="options[control.name]"
+                (change)="onValueChanged($event)">
+              <input *ngIf="control.type==='range'" [name]="control.name" [attr.name]="control.name" [type]="control.type" [(ngModel)]="options[control.name]"
+                [max]="control.max" [min]="control.min" [step]="control.step" (change)="onValueChanged($event)">
+              <select class="form-control" *ngIf="control.type==='select'" [name]="control.name" [attr.name]="control.name" [(ngModel)]="options[control.name]"
+                (change)="onValueChanged($event)">
+                <option *ngFor="let value of control.options">{{value}}</option>
+              </select>
+              <input *ngIf="control.type!=='range' && control.type!=='checkbox' && control.type!=='select'" [name]="control.name" [attr.name]="control.name"
+                [type]="control.type" [(ngModel)]="options[control.name]" (change)="onValueChanged($event)">
+            </div>
+          </div>
+        </form>
       </div>
-      <div class="form-group">
-        <label for="radius" class="col-sm-4 control-label">radius = <span class="text-muted">{{options.radius}}</span></label>
-        <div class="col-sm-8">
-          <input name="radius" type="range" [(ngModel)]="options.radius" min="20" max="250" step="1">
-        </div>
+      <div role="tabpanel" class="tab-pane" id="typescript">
+        <pre>
+import {{ '{' }} NgCircleProgressModule } from 'ng-circle-progress';
+
+@NgModule({{ '{' }}
+  //...
+  imports: [
+    //...
+    NgCircleProgressModule.forRoot({{configurations|json}})
+  ],
+  //...
+})
+export class AppModule {{ '{' }} }</pre>
       </div>
-      <div class="form-group">
-        <label for="space" class="col-sm-4 control-label">space = <span class="text-muted">{{options.space}}</span></label>
-        <div class="col-sm-8">
-          <input name="space" type="range" [(ngModel)]="options.space" min="0" max="50" step="1">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="outerStrokeWidth" class="col-sm-4 control-label">outerStrokeWidth = <span class="text-muted">{{options.outerStrokeWidth}}</span></label>
-        <div class="col-sm-8">
-          <input name="outerStrokeWidth" type="range" [(ngModel)]="options.outerStrokeWidth" min="1" max="50" step="1">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="innerStrokeWidth" class="col-sm-4 control-label">innerStrokeWidth = <span class="text-muted">{{options.innerStrokeWidth}}</span></label>
-        <div class="col-sm-8">
-          <input name="innerStrokeWidth" type="range" [(ngModel)]="options.innerStrokeWidth" min="0" max="50" step="1">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="animationDuration" class="col-sm-4 control-label">animationDuration = <span class="text-muted">{{options.animationDuration}}</span></label>
-        <div class="col-sm-8">
-          <input name="animationDuration" type="range" [(ngModel)]="options.animationDuration" min="0" max="10000" step="100">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="backgroundColor" class="col-sm-4 control-label">backgroundColor = <span class="text-muted">{{options.backgroundColor}}</span></label>
-        <div class="col-sm-8">
-          <input name="backgroundColor" type="color" [(ngModel)]="options.backgroundColor">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="backgroundOpacity" class="col-sm-4 control-label">backgroundOpacity = <span class="text-muted">{{options.backgroundOpacity}}</span></label>
-        <div class="col-sm-8">
-          <input name="backgroundOpacity" type="range" [(ngModel)]="options.backgroundOpacity" min="0" max="1" step="0.1">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="outerStrokeColor" class="col-sm-4 control-label">outerStrokeColor = <span class="text-muted">{{options.outerStrokeColor}}</span></label>
-        <div class="col-sm-8">
-          <input name="outerStrokeColor" type="color" [(ngModel)]="options.outerStrokeColor">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="innerStrokeColor" class="col-sm-4 control-label">innerStrokeColor = <span class="text-muted">{{options.innerStrokeColor}}</span></label>
-        <div class="col-sm-8">
-          <input name="innerStrokeColor" type="color" [(ngModel)]="options.innerStrokeColor">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="innerStrokeColor" class="col-sm-4 control-label">
-        </label>
-        <div class="col-sm-8">
-          <a class="btn btn-primary btn-lg" href="{{githubLink}}#options">Full options &raquo;</a>
-        </div>
-      </div>
-    </form>
+    </div>
   </div>
 </div>

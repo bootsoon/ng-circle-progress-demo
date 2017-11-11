@@ -21,6 +21,7 @@
     <circle-progress [options]="optionsB" [renderOnClick]="false" class="copy" (click)="copyOptions($event, optionsB)"></circle-progress>
     <circle-progress [options]="optionsC" [renderOnClick]="false" class="copy" (click)="copyOptions($event, optionsC)"></circle-progress>
     <circle-progress [options]="optionsD" [renderOnClick]="false" class="copy" (click)="copyOptions($event, optionsD)"></circle-progress>
+    <circle-progress [options]="optionsE" [renderOnClick]="false" class="copy" (click)="copyOptions($event, optionsE)"></circle-progress>
   </div>
 
   <div class="col-md-6 col-sm-12">
@@ -37,7 +38,7 @@
       [showTitle]="options.showTitle" [showSubtitle]="options.showSubtitle" [showUnits]="options.showUnits" [titleFontSize]="options.titleFontSize"
       [unitsFontSize]="options.unitsFontSize" [subtitleFontSize]="options.subtitleFontSize" [outerStrokeLinecap]="options.outerStrokeLinecap"
       [showBackground]="options.showBackground" [showInnerStroke]="options.showInnerStroke" [maxPercent]="options.maxPercent"
-      [toFixed]="options.toFixed"></circle-progress>
+      [toFixed]="options.toFixed" [clockwise]="options.clockwise" [title]="options.title"></circle-progress>
   </div>
 
   <div class="col-md-6 col-sm-12">

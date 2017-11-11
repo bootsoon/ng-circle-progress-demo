@@ -24,6 +24,7 @@ export class AppComponent {
         { name: 'showSubtitle', type: 'checkbox' },
         { name: 'showBackground', type: 'checkbox' },
         { name: 'showInnerStroke', type: 'checkbox' },
+        { name: 'clockwise', type: 'checkbox' },
       ]
     },
     {
@@ -47,7 +48,7 @@ export class AppComponent {
     {
       groupName: 'Stroke', controls: [
         { name: 'outerStrokeWidth', type: 'range', min: 1, max: 50, step: 1 },
-        { name: 'space', type: 'range', min: 0, max: 50, step: 1 },
+        { name: 'space', type: 'range', min: -20, max: 50, step: 1 },
         { name: 'innerStrokeWidth', type: 'range', min: 0, max: 50, step: 1 },
         { name: 'backgroundStrokeWidth', type: 'range', min: 0, max: 50, step: 1 },
         { name: 'outerStrokeLinecap', type: 'select', options: ['butt', 'round', 'square', 'inherit'] },
@@ -77,6 +78,7 @@ export class AppComponent {
     showBackground: false,
     outerStrokeWidth: 10,
     innerStrokeWidth: 5,
+    subtitleFormat: false,  // clear subtitleFormat coming from other options, because Angular does not assign if variable is undefined. 
   }
 
   optionsB = {
@@ -94,6 +96,7 @@ export class AppComponent {
     titleColor: '#483500',
     unitsColor: '#483500',
     subtitleColor: '#483500',
+    subtitleFormat: false,  // clear subtitleFormat coming from other options, because Angular does not assign if variable is undefined. 
   }
 
   optionsC = {
@@ -107,9 +110,9 @@ export class AppComponent {
     innerStrokeColor: '#32CD32',
     outerStrokeColor: '#FF6347',
     toFixed: 2,
+    subtitleFormat: false,  // clear subtitleFormat coming from other options, because Angular does not assign if variable is undefined. 
   }
   
-
   optionsD = {
     percent: 101,
     maxPercent: 100,
@@ -122,7 +125,7 @@ export class AppComponent {
     outerStrokeColor: '#61A9DC',
     backgroundColor: '#DDDDDD',
     subtitleColor: '#444444',
-    subtitleFormat: (percent): string => {
+    subtitleFormat: (percent: number): string => {
       if (percent >= 100) {
         return "Congratulations!"
       } else {
@@ -131,6 +134,25 @@ export class AppComponent {
     }
   }
   
+  optionsE = {
+    percent: 75,
+    radius: 60,
+    outerStrokeWidth: 10,
+    innerStrokeWidth: 10,
+    space: -10,
+    outerStrokeColor: "#4882c2",
+    innerStrokeColor: "#e7e8ea",
+    showBackground: false,
+    title: 'UI',
+    animateTitle: false,
+    showUnits: false,
+    clockwise: false,
+    animationDuration: 1000,
+    subtitleFormat: (percent: number): string => {
+      return `${percent}%`;
+    }
+  }
+
   public get configurations(): any {
     let configurations = Object.assign({}, this.options);
     delete configurations['percent'];

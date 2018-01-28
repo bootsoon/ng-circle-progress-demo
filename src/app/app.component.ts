@@ -153,6 +153,28 @@ export class AppComponent {
     }
   }
 
+  optionsF = {
+    percent: 60,
+    radius: 60,
+    backgroundPadding: 7,
+    outerStrokeWidth: 2,
+    innerStrokeWidth: 2,
+    space: -2,
+    outerStrokeColor: "#808080",
+    innerStrokeColor: "#e7e8ea",
+    showBackground: true,
+    title: ['working', 'in', 'progress'],
+    titleFontSize: 12,
+    subtitleFontSize: 20,
+    animateTitle: false,
+    showUnits: false,
+    clockwise: false,
+    animationDuration: 1000,
+    subtitleFormat: (percent: number): string => {
+      return `${percent}%`;
+    }
+  }
+
   public get configurations(): any {
     let configurations = Object.assign({}, this.options);
     delete configurations['percent'];

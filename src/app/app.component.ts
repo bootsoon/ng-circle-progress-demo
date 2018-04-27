@@ -25,6 +25,7 @@ export class AppComponent {
         { name: 'showBackground', type: 'checkbox' },
         { name: 'showInnerStroke', type: 'checkbox' },
         { name: 'clockwise', type: 'checkbox' },
+        { name: 'responsive', type: 'checkbox' },
       ]
     },
     {

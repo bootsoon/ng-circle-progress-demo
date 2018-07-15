@@ -13,6 +13,8 @@ export class AppComponent {
 
   githubLink = "https://github.com/bootsoon/ng-circle-progress";
 
+  _timer = null;
+
   controlGroups = [
     {
       groupName: 'Basic', controls: [
@@ -26,6 +28,7 @@ export class AppComponent {
         { name: 'showInnerStroke', type: 'checkbox' },
         { name: 'clockwise', type: 'checkbox' },
         { name: 'responsive', type: 'checkbox' },
+        { name: 'startFromZero', type: 'checkbox' },
       ]
     },
     {
@@ -80,6 +83,7 @@ export class AppComponent {
     outerStrokeWidth: 10,
     innerStrokeWidth: 5,
     subtitleFormat: false,  // clear subtitleFormat coming from other options, because Angular does not assign if variable is undefined. 
+    startFromZero: false,
   }
 
   optionsB = {
@@ -98,6 +102,7 @@ export class AppComponent {
     unitsColor: '#483500',
     subtitleColor: '#483500',
     subtitleFormat: false,  // clear subtitleFormat coming from other options, because Angular does not assign if variable is undefined. 
+    startFromZero: false,
   }
 
   optionsC = {
@@ -112,6 +117,7 @@ export class AppComponent {
     outerStrokeColor: '#FF6347',
     toFixed: 2,
     subtitleFormat: false,  // clear subtitleFormat coming from other options, because Angular does not assign if variable is undefined. 
+    startFromZero: false,
   }
   
   optionsD = {
@@ -126,6 +132,7 @@ export class AppComponent {
     outerStrokeColor: '#61A9DC',
     backgroundColor: '#DDDDDD',
     subtitleColor: '#444444',
+    startFromZero: false,
     subtitleFormat: (percent: number): string => {
       if (percent >= 100) {
         return "Congratulations!"
@@ -149,6 +156,7 @@ export class AppComponent {
     showUnits: false,
     clockwise: false,
     animationDuration: 1000,
+    startFromZero: false,
     subtitleFormat: (percent: number): string => {
       return `${percent}%`;
     }
@@ -204,7 +212,24 @@ export class AppComponent {
   }
 
   resetOptions = () => {
+    this.stop();
     this.options = new CircleProgressOptions();
+  }
+
+  start = () => {
+    if(this._timer !== null){
+      clearInterval(this._timer);
+    }
+    this._timer = window.setInterval(()=> {
+      this.options.percent = (Math.round(Math.random()*100));
+    }, 1000);
+  }
+
+  stop = () => {
+    if(this._timer !== null){
+      clearInterval(this._timer);
+      this._timer = null;
+    }
   }
 
 }

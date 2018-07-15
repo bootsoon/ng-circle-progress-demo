@@ -9,7 +9,7 @@
 <div class="jumbotron">
   <div class="container">
     <h2>NgCircleProgress Demo</h2>
-    <p>A simple circle progress component created for Angular 4 based on SVG Graphics.</p>
+    <p>A simple circle progress component created for Angular based on SVG Graphics.</p>
     <a class="btn btn-lg btn-primary" [href]="githubLink">View on GitHub</a>
   </div>
 </div>
@@ -27,6 +27,8 @@
 
   <div class="col-md-6 col-sm-12">
 
+    <a href="javascript:;" class="btn btn-default pull-right" role="button" (click)="stop()" *ngIf="_timer!==null">Stop </a>
+    <a href="javascript:;" class="btn btn-default pull-right" role="button" (click)="start()" *ngIf="_timer===null" title="Start changing percent randomly">Start</a>
     <a href="javascript:;" class="btn btn-default pull-right" role="button" (click)="resetOptions()">Reset</a>
 
     <circle-progress #circleProgress [percent]="options.percent" [radius]="options.radius" [subtitleFormat]="options.subtitleFormat"
@@ -39,7 +41,8 @@
       [showTitle]="options.showTitle" [showSubtitle]="options.showSubtitle" [showUnits]="options.showUnits" [titleFontSize]="options.titleFontSize"
       [unitsFontSize]="options.unitsFontSize" [subtitleFontSize]="options.subtitleFontSize" [outerStrokeLinecap]="options.outerStrokeLinecap"
       [showBackground]="options.showBackground" [showInnerStroke]="options.showInnerStroke" [maxPercent]="options.maxPercent"
-      [toFixed]="options.toFixed" [clockwise]="options.clockwise" [title]="options.title" [responsive]="options.responsive"></circle-progress>
+      [toFixed]="options.toFixed" [clockwise]="options.clockwise" [title]="options.title" [responsive]="options.responsive" [startFromZero]="options.startFromZero">
+    </circle-progress>
  
   </div>
 

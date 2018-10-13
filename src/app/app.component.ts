@@ -24,6 +24,7 @@ export class AppComponent {
         { name: 'showTitle', type: 'checkbox' },
         { name: 'showUnits', type: 'checkbox' },
         { name: 'showSubtitle', type: 'checkbox' },
+        { name: 'showImage', type: 'checkbox' },
         { name: 'showBackground', type: 'checkbox' },
         { name: 'showInnerStroke', type: 'checkbox' },
         { name: 'clockwise', type: 'checkbox' },
@@ -35,6 +36,8 @@ export class AppComponent {
       groupName: 'Size', controls: [
         { name: 'radius', type: 'range', min: 20, max: 250, step: 1 },
         { name: 'backgroundPadding', type: 'range', min: -50, max: 50, step: 1 },
+        { name: 'imageHeight', type: 'range', min: 20, max: 250, step: 1 },
+        { name: 'imageWidth', type: 'range', min: 20, max: 250, step: 1 },
       ],
     },
     {
@@ -182,6 +185,21 @@ export class AppComponent {
     subtitleFormat: (percent: number): string => {
       return `${percent}%`;
     }
+  }
+
+  optionsG = {
+    percent: 75,
+    radius: 60,
+    outerStrokeWidth: 5,
+    innerStrokeWidth: 5,
+    space: -5,
+    outerStrokeColor: "#76C2AF",
+    innerStrokeColor: "#ffffff",
+    showBackground: false,
+    showImage: true,
+    imageSrc: "assets/images/music.svg",
+    imageHeight: 105,
+    imageWidth: 105,
   }
 
   public get configurations(): any {

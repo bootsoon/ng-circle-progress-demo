@@ -23,6 +23,7 @@
     <circle-progress [options]="optionsD" [renderOnClick]="false" class="copy" (click)="copyOptions($event, optionsD)"></circle-progress>
     <circle-progress [options]="optionsE" [renderOnClick]="false" class="copy" (click)="copyOptions($event, optionsE)"></circle-progress>
     <circle-progress [options]="optionsF" [renderOnClick]="false" class="copy" (click)="copyOptions($event, optionsF)"></circle-progress>
+    <circle-progress [options]="optionsG" [renderOnClick]="false" class="copy" (click)="copyOptions($event, optionsG)"></circle-progress>
   </div>
 
   <div class="col-md-6 col-sm-12">
@@ -41,7 +42,9 @@
       [showTitle]="options.showTitle" [showSubtitle]="options.showSubtitle" [showUnits]="options.showUnits" [titleFontSize]="options.titleFontSize"
       [unitsFontSize]="options.unitsFontSize" [subtitleFontSize]="options.subtitleFontSize" [outerStrokeLinecap]="options.outerStrokeLinecap"
       [showBackground]="options.showBackground" [showInnerStroke]="options.showInnerStroke" [maxPercent]="options.maxPercent"
-      [toFixed]="options.toFixed" [clockwise]="options.clockwise" [title]="options.title" [responsive]="options.responsive" [startFromZero]="options.startFromZero">
+      [toFixed]="options.toFixed" [clockwise]="options.clockwise" [title]="options.title" 
+      [showImage]="options.showImage" [imageSrc]="options.imageSrc" [imageHeight]="options.imageHeight" [imageWidth]="options.imageWidth"
+      [responsive]="options.responsive" [startFromZero]="options.startFromZero">
     </circle-progress>
  
   </div>

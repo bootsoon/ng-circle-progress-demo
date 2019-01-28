@@ -35,16 +35,19 @@
     <circle-progress #circleProgress [percent]="options.percent" [radius]="options.radius" [subtitleFormat]="options.subtitleFormat"
       [space]="options.space" [outerStrokeWidth]="options.outerStrokeWidth" [innerStrokeWidth]="options.innerStrokeWidth" [animationDuration]="options.animationDuration"
       [outerStrokeColor]="options.outerStrokeColor" [innerStrokeColor]="options.innerStrokeColor" [backgroundColor]="options.backgroundColor"
-      [backgroundOpacity]="options.backgroundOpacity" [class]="'center-block cursor-pointer'" [animation]="options.animation"
+      [backgroundOpacity]="options.backgroundOpacity" [class]="'center-block cursor-pointer'" [animation]="options.animation" [animateTitle]="options.animateTitle" 
       [backgroundStroke]="options.backgroundStroke" [backgroundStrokeWidth]="options.backgroundStrokeWidth" [backgroundPadding]="options.backgroundPadding"
-      [animateTitle]="options.animateTitle" [unitsFontSize]="options.unitsFontSize" [unitsColor]="options.unitsColor" [titleColor]="options.titleColor"
-      [titleFontSize]="options.titleFontSize" [subtitleColor]="options.subtitleColor" [subtitleFontSize]="options.subtitleFontSize"
-      [showTitle]="options.showTitle" [showSubtitle]="options.showSubtitle" [showUnits]="options.showUnits" [titleFontSize]="options.titleFontSize"
+      [unitsFontSize]="options.unitsFontSize" [unitsFontWeight]="options.unitsFontWeight" [unitsColor]="options.unitsColor" 
+      [titleColor]="options.titleColor" [titleFontSize]="options.titleFontSize" [titleFontWeight]="options.titleFontWeight" 
+      [subtitleColor]="options.subtitleColor" [subtitleFontSize]="options.subtitleFontSize" [subtitleFontWeight]="options.subtitleFontWeight"
+      [showTitle]="options.showTitle" [showSubtitle]="options.showSubtitle" [showUnits]="options.showUnits"
       [unitsFontSize]="options.unitsFontSize" [subtitleFontSize]="options.subtitleFontSize" [outerStrokeLinecap]="options.outerStrokeLinecap"
       [showBackground]="options.showBackground" [showInnerStroke]="options.showInnerStroke" [maxPercent]="options.maxPercent"
       [toFixed]="options.toFixed" [clockwise]="options.clockwise" [title]="options.title" 
       [showImage]="options.showImage" [imageSrc]="options.imageSrc" [imageHeight]="options.imageHeight" [imageWidth]="options.imageWidth"
-      [responsive]="options.responsive" [startFromZero]="options.startFromZero">
+      [responsive]="options.responsive" [startFromZero]="options.startFromZero" [showZeroOuterStroke]="options.showZeroOuterStroke"
+      [backgroundGradient]="options.backgroundGradient" [outerStrokeGradient]="options.outerStrokeGradient"
+      [backgroundGradientStopColor]="options.backgroundGradientStopColor" [outerStrokeGradientStopColor]="options.outerStrokeGradientStopColor">
     </circle-progress>
  
   </div>

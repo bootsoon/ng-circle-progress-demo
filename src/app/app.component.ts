@@ -30,6 +30,7 @@ export class AppComponent {
         { name: 'clockwise', type: 'checkbox' },
         { name: 'responsive', type: 'checkbox' },
         { name: 'startFromZero', type: 'checkbox' },
+        { name: 'showZeroOuterStroke', type: 'checkbox' },
       ]
     },
     {
@@ -42,10 +43,14 @@ export class AppComponent {
     },
     {
       groupName: 'Color', controls: [
+        { name: 'backgroundGradient', type: 'checkbox' },
         { name: 'backgroundOpacity', type: 'range', min: 0, max: 1, step: 0.1 },
         { name: 'backgroundColor', type: 'color' },
+        { name: 'backgroundGradientStopColor', type: 'color' },
         { name: 'backgroundStroke', type: 'color' },
+        { name: 'outerStrokeGradient', type: 'checkbox' },
         { name: 'outerStrokeColor', type: 'color' },
+        { name: 'outerStrokeGradientStopColor', type: 'color' },
         { name: 'innerStrokeColor', type: 'color' },
         { name: 'titleColor', type: 'color' },
         { name: 'unitsColor', type: 'color' },
@@ -66,6 +71,9 @@ export class AppComponent {
         { name: 'titleFontSize', type: 'range', min: 10, max: 100, step: 1 },
         { name: 'unitsFontSize', type: 'range', min: 10, max: 100, step: 1 },
         { name: 'subtitleFontSize', type: 'range', min: 10, max: 100, step: 1 },
+        { name: 'titleFontWeight', type: 'range', min: 100, max: 900, step: 100 },
+        { name: 'unitsFontWeight', type: 'range', min: 100, max: 900, step: 100 },
+        { name: 'subtitleFontWeight', type: 'range', min: 100, max: 900, step: 100 },
       ]
     },
     {
@@ -133,7 +141,9 @@ export class AppComponent {
     backgroundPadding: -10,
     backgroundStrokeWidth: 0,
     outerStrokeColor: '#61A9DC',
-    backgroundColor: '#DDDDDD',
+    backgroundColor: '#ffffff',
+    backgroundGradientStopColor: '#c0c0c0',
+    backgroundGradient: true,
     subtitleColor: '#444444',
     startFromZero: false,
     subtitleFormat: (percent: number): string => {
@@ -160,6 +170,8 @@ export class AppComponent {
     clockwise: false,
     animationDuration: 1000,
     startFromZero: false,
+    outerStrokeGradient: true,
+    outerStrokeGradientStopColor: '#53a9ff',
     subtitleFormat: (percent: number): string => {
       return `${percent}%`;
     }
